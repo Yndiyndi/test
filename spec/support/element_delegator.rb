@@ -30,8 +30,8 @@ class ElementDelegator < Delegator
     rescue Watir::Exception::UnknownObjectException => e
       if tries < 5 then
         sleep 0.2
-        retry 
-      else 
+        retry
+      else
         raise("Delegator didn't saved you from #{e.class.to_s} - #{e}")
       end
     end

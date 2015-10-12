@@ -2,7 +2,6 @@ require 'rubygems'
 require 'support/automatix_config'
 require 'faker'
 require 'pry'
-require 'pry-nav'
 require 'watir'
 require 'watir-webdriver'
 require 'page-object'
@@ -19,7 +18,7 @@ RSpec.configure do |config|
   config.include Automatix::PageObjectConfig
 
   config.before(:all) do
-    @browser_res_x = 1366 
+    @browser_res_x = 1366
     @browser_res_y = 768
 
     case ENV['BROWSER']
