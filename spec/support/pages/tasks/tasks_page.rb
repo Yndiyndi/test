@@ -6,7 +6,7 @@ class TasksPage < AbstractPage
   page_url "https://app.futuresimple.com/tasks"
 
   button(:add_new_task, :css => ".new-task")
-  div(:tasks_list, :css => ".tasks")
+  unordered_list(:tasks_list, :css => ".tasks-list.list-container")
   span(:tasks_count, :css => "#tasks-count")
   text_field(:list_search, :css => '.input-medium')
 
@@ -23,11 +23,7 @@ class TasksPage < AbstractPage
   end
 
   def get_task content
-    task = []
-    tasks_list_element.when_visible.list_item_elements.each do |item|
-      task << item if item.h3_element.text == content
-    end
-    task
+    tasks_list_element.when_visible(10).list_item_element(class: "item", text: content).when_visible(10)
   end
 
   def edit_task content
